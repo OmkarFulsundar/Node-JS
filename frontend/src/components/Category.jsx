@@ -17,7 +17,6 @@ function Category() {
 
   const saveCategory = () => {
     const payload = { category_Name: categoryName };
-
     const req = editId
       ? api.put(`/categories/${editId}`, payload)
       : api.post("/categories", payload);
@@ -39,6 +38,7 @@ function Category() {
   };
 
   // 🔹 SPLIT DATA
+
   const firstPart = categories.slice(0, 7);
   const secondPart = categories.slice(7, 14);
 
@@ -57,13 +57,12 @@ function Category() {
             <td>{c.category_Id}</td>
             <td>{c.category_Name}</td>
             <td>
+
               <button onClick={() => editCategory(c)}>Edit</button>
               <button
                 onClick={() => deleteCategory(c.category_Id)}
-                style={{ marginLeft: 5 }}
-              >
-                Delete
-              </button>
+                style={{ marginLeft: 5 }} > Delete </button>
+             
             </td>
           </tr>
         ))}
@@ -75,28 +74,22 @@ function Category() {
     <>
       <h2 style={{ textAlign: "center" }}>Category Master</h2>
 
-      {/* Form */}
       <div style={{ textAlign: "center", marginBottom: 20 }}>
-        <input
-          placeholder="Category Name"
-          value={categoryName}
-          onChange={e => setCategoryName(e.target.value)}
-        />
+
+        <input placeholder="Category Name" value={categoryName}
+          onChange={e => setCategoryName(e.target.value)} />
 
         <button onClick={saveCategory} style={{ marginLeft: 10 }}>
-          {editId ? "Update" : "Add"}
-        </button>
+          {editId ? "Update" : "Add"} </button>
       </div>
 
-      {/* Side-by-Side Tables */}
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           gap: "20px",
           padding: "0 10rem"
-        }}
-      >
+        }} >
         <div style={{ width: "50%" }}>
           <h3 style={{ textAlign: "center" }}>Categories 1 - 7</h3>
           {renderTable(firstPart)}

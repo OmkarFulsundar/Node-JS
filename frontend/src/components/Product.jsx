@@ -58,19 +58,14 @@ function Product() {
     <>
       <h2 style={{ textAlign: "center" }}>Product List</h2>
 
-      {/* Form */}
       <div style={{ textAlign: "center", marginBottom: 20 }}>
-        <input
-          placeholder="Product Name"
-          value={productName}
-          onChange={e => setProductName(e.target.value)}
-        />
 
-        <select
-          value={categoryId}
+        <input placeholder="Product Name" value={productName}
+          onChange={e => setProductName(e.target.value)} />
+
+        <select value={categoryId}
           onChange={e => setCategoryId(e.target.value)}
-          style={{ marginLeft: 10 }}
-        >
+          style={{ marginLeft: 10 }} >
           <option value="">Select Category</option>
           {categories.map(c => (
             <option key={c.category_Id} value={c.category_Id}>
@@ -80,11 +75,9 @@ function Product() {
         </select>
 
         <button onClick={saveProduct} style={{ marginLeft: 10 }}>
-          {editId ? "Update" : "Add"}
-        </button>
+          {editId ? "Update" : "Add"} </button>
       </div>
 
-      {/* Table */}
       <div style={{ display: "flex", justifyContent: "center" }}>
         <table border="1" cellPadding="8">
           <thead>
@@ -107,10 +100,10 @@ function Product() {
                   <button onClick={() => editProduct(p)}>Edit</button>
                   <button
                     onClick={() => deleteProduct(p.product_Id)}
-                    style={{ marginLeft: 5 }}
-                  >
+                    style={{ marginLeft: 5 }}  >
                     Delete
                   </button>
+                 
                 </td>
               </tr>
             ))}
@@ -118,18 +111,16 @@ function Product() {
         </table>
       </div>
 
-      {/* Pagination */}
       <div style={{ textAlign: "center", marginTop: 15 }}>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-          Prev
+        <button disabled={page === 1} onClick={() => 
+          setPage(page - 1)}>  Prev
         </button>
 
         <span style={{ margin: "0 10px" }}>
-          Page {page} of {totalPages}
-        </span>
+          Page {page} of {totalPages} </span>
 
-        <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>
-          Next
+        <button disabled={page === totalPages} onClick={() => 
+          setPage(page + 1)}> Next
         </button>
       </div>
     </>
