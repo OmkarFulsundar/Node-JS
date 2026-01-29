@@ -88,7 +88,8 @@ function Category() {
           display: "flex",
           justifyContent: "center",
           gap: "20px",
-          padding: "0 10rem"
+          padding: "0 10rem",
+          textAlign: "center"
         }} >
         <div style={{ width: "50%" }}>
           <h3 style={{ textAlign: "center" }}>Categories 1 - 7</h3>

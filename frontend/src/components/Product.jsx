@@ -59,13 +59,16 @@ function Product() {
       <h2 style={{ textAlign: "center" }}>Product List</h2>
 
       <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <input
+          placeholder="Product Name"
+          value={productName}
+          onChange={e => setProductName(e.target.value)}
+          style={{ padding: "5px", width: "200px" }} />
 
-        <input placeholder="Product Name" value={productName}
-          onChange={e => setProductName(e.target.value)} />
-
-        <select value={categoryId}
+        <select
+          value={categoryId}
           onChange={e => setCategoryId(e.target.value)}
-          style={{ marginLeft: 10 }} >
+          style={{ marginLeft: 10, padding: "5px", width: "180px" }} >
           <option value="">Select Category</option>
           {categories.map(c => (
             <option key={c.category_Id} value={c.category_Id}>
@@ -74,12 +77,20 @@ function Product() {
           ))}
         </select>
 
-        <button onClick={saveProduct} style={{ marginLeft: 10 }}>
+        <button onClick={saveProduct} style={{ marginLeft: 10, padding: "5px 10px" }}>
           {editId ? "Update" : "Add"} </button>
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <table border="1" cellPadding="8">
+        <table
+          border="1"
+          cellPadding="10"
+          style={{
+            width: "90%",      
+            maxWidth: "1000px", 
+            fontSize: "15px",  
+            textAlign: "center",
+          }} >
           <thead>
             <tr>
               <th>Product ID</th>
@@ -98,12 +109,10 @@ function Product() {
                 <td>{p.category_Name}</td>
                 <td>
                   <button onClick={() => editProduct(p)}>Edit</button>
+
                   <button
                     onClick={() => deleteProduct(p.product_Id)}
-                    style={{ marginLeft: 5 }}  >
-                    Delete
-                  </button>
-                 
+                    style={{ marginLeft: 5 }} > Delete </button>
                 </td>
               </tr>
             ))}
@@ -112,16 +121,14 @@ function Product() {
       </div>
 
       <div style={{ textAlign: "center", marginTop: 15 }}>
-        <button disabled={page === 1} onClick={() => 
-          setPage(page - 1)}>  Prev
-        </button>
+        <button disabled={page === 1} onClick={() =>
+           setPage(page - 1)}> Prev </button>
 
         <span style={{ margin: "0 10px" }}>
           Page {page} of {totalPages} </span>
 
-        <button disabled={page === totalPages} onClick={() => 
-          setPage(page + 1)}> Next
-        </button>
+        <button disabled={page === totalPages} onClick={() =>
+           setPage(page + 1)}> Next </button>
       </div>
     </>
   );
